@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems,
+Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/j2ee/dtds/web-app_2_3.dtd">
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+    <servlet>
+        <servlet-name>UserViewServlet</servlet-name>
+        <servlet-class>
+            application.base.servlets.UserViewServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserViewServlet</servlet-name>
+        <url-pattern>/view</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserCreateServlet</servlet-name>
+        <servlet-class>
+            application.base.servlets.UserCreateServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserCreateServlet</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserEditServlet</servlet-name>
+        <servlet-class>
+            application.base.servlets.UserEditServlet
+        </servlet-class>
+        <load-on-startup>10</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserEditServlet</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserDeleteServlet</servlet-name>
+        <servlet-class>
+            application.base.servlets.UserDeleteServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserDeleteServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SessionCounterServlet</servlet-name>
+        <servlet-class>
+            application.base.servlets.SessionCounterServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionCounterServlet</servlet-name>
+        <url-pattern>/count</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StandardErrorServlet</servlet-name>
+        <servlet-class>
+            application.base.servlets.StandardErrorServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StandardErrorServlet</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>
+            application.base.filters.LoginFilter1
+        </filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/create</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>loginFilter2</filter-name>
+        <filter-class>
+            application.base.filters.LoginFilter2
+        </filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter2</filter-name>
+        <url-pattern>/create</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>InfoFilter</filter-name>
+        <filter-class>
+            application.base.filters.RequestInfoFilter
+        </filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>InfoFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <listener>
+        <listener-class>application.base.listeners.LogListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>application.base.listeners.RequestListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>application.base.listeners.RequestAttributeListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>application.base.listeners.ContextAttributeListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>application.base.listeners.SessionAttributeListener</listener-class>
+    </listener>
+
+    <welcome-file-list>
+        <welcome-file>views/UserView.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>
